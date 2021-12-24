@@ -1,0 +1,2 @@
+# Hi. Go to Program.cs to start programming in C# 9!
+run="dotnet-src/dotnet run"
