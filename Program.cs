@@ -31,15 +31,16 @@ namespace DIO.Series
               continuar=1;
               break;
             case 3:
-              AtualizarSerie();
+              AtualizarSerie(totalSeries);
               continuar=1;
               break;
             case 4:
-              ExcluirSerie();
+              ExcluirSerie(totalSeries
+              );
               continuar=1;
               break;
             case 5:
-              VisualizarSerie();
+              VisualizarSerie(totalSeries);
               continuar=1;
               break;
             case 6:
@@ -62,55 +63,66 @@ namespace DIO.Series
 			  Console.ReadLine();
       }
 
-      private static void ExcluirSerie()
+      private static void ExcluirSerie(int totalSeries)
 		  {
-			  Console.Write("Digite o id da série: ");
+			  Console.Write("Digite o id da série a ser excluida: ");
 			  int indiceSerie = int.Parse(Console.ReadLine());
-
-			  repositorio.Exclui(indiceSerie);
+        if(totalSeries>0 && indiceSerie<totalSeries)
+			    repositorio.Exclui(indiceSerie);
+        else{
+          Console.Write("\nIndice invalido!\n");
+        }
 		  }
 
-      private static void VisualizarSerie()
+      private static void VisualizarSerie(int totalSeries)
 		  {
-			  Console.Write("Digite o id da série: ");
+			  Console.Write("Digite o id (válido) da série: ");
 			  int indiceSerie = int.Parse(Console.ReadLine());
 
-			  var serie = repositorio.RetornaPorId(indiceSerie);
-
-			  Console.WriteLine(serie);
+        if(totalSeries>0 && indiceSerie<totalSeries){
+          var serie = repositorio.RetornaPorId(indiceSerie);
+          Console.WriteLine(serie);
+        }else{
+          Console.WriteLine("\nVocê digitou um id inválido!\n");
+        }
 		  }
 
-      private static void AtualizarSerie()
+      private static void AtualizarSerie(int totalSeries)
 		  {
-			  Console.Write("Digite o id da série: ");
+			  Console.Write("Digite o id (válido) da série: ");
 			  int indiceSerie = int.Parse(Console.ReadLine());
 
 			  // https://docs.microsoft.com/pt-br/dotnet/api/system.enum.getvalues?view=netcore-3.1
 			  // https://docs.microsoft.com/pt-br/dotnet/api/system.enum.getname?view=netcore-3.1
-			  foreach (int i in Enum.GetValues(typeof(Genero)))
-			  {
-				  Console.WriteLine("{0}-{1}", i, Enum.GetName(typeof(Genero), i));
-			  }
-			  Console.Write("Digite o gênero entre as opções acima: ");
-			  int entradaGenero = int.Parse(Console.ReadLine());
+        if(totalSeries>0 && indiceSerie<totalSeries)
+        {
+          foreach (int i in Enum.GetValues(typeof(Genero)))
+          {
+            Console.WriteLine("{0}-{1}", i, Enum.GetName(typeof(Genero), i));
+          }
+          Console.Write("Digite o gênero entre as opções acima: ");
+          int entradaGenero = int.Parse(Console.ReadLine());  
 
-			  Console.Write("Digite o Título da Série: ");
-			  string entradaTitulo = Console.ReadLine();
+          Console.Write("Digite o Título da Série: ");
+          string entradaTitulo = Console.ReadLine();
 
-			  Console.Write("Digite o Ano de Início da Série: ");
-			  int entradaAno = int.Parse(Console.ReadLine());
+          Console.Write("Digite o Ano de Início da Série: ");
+          int entradaAno = int.Parse(Console.ReadLine());
 
-			  Console.Write("Digite a Descrição da Série: ");
-			  string entradaDescricao = Console.ReadLine();
+          Console.Write("Digite a Descrição da Série: ");
+          string entradaDescricao = Console.ReadLine();
 
-        // Atualizar a série
-			  Serie atualizaSerie = new Serie(id: indiceSerie,
-										genero: (Genero)entradaGenero,
-										titulo: entradaTitulo,
-										ano: entradaAno,
-										descricao: entradaDescricao);
+          // Atualizar a série
+          Serie atualizaSerie = new Serie(id: indiceSerie,
+                      genero: (Genero)entradaGenero,
+                      titulo: entradaTitulo,
+                      ano: entradaAno,
+                      descricao: entradaDescricao);
 
-			  repositorio.Atualiza(indiceSerie, atualizaSerie);
+          repositorio.Atualiza(indiceSerie, atualizaSerie);
+        }else{
+          Console.WriteLine("\nVocê digitou um id inválido!\n");
+        }
 		  }
 
       private static void ListarSeries()
