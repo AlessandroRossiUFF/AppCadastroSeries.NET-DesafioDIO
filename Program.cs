@@ -5,39 +5,53 @@ namespace DIO.Series
     class Program
     {
       static SerieRepositorio repositorio = new SerieRepositorio();
+      //int totalSeries = 0;
 
       static void Main(string[] args)
       {
         string opcaoUsuario = ObterOpcaoUsuario();
-
-			  while (opcaoUsuario.ToUpper() != "X")
+        int escolhaUsuario = ObterOpcaoUsuario2();
+        int continuar=1;
+			  while (continuar!=0)
 			  {
-				  switch (opcaoUsuario)
+          continuar=0;
+          
+				  switch (escolhaUsuario)
 				  {
-            case "1":
+            case 1:
               ListarSeries();
+              continuar=1;
               break;
-            case "2":
+            case 2:
               InserirSerie();
+              continuar=1;
               break;
-            case "3":
+            case 3:
               AtualizarSerie();
+              continuar=1;
               break;
-            case "4":
+            case 4:
               ExcluirSerie();
+              continuar=1;
               break;
-            case "5":
+            case 5:
               VisualizarSerie();
+              continuar=1;
               break;
-            case "C":
+            case 6:
               Console.Clear();
+              continuar=1;
               break;
-
-            default:
-              throw new ArgumentOutOfRangeException();
+            case 7:
+              Console.WriteLine("Escolha: "+escolhaUsuario);
+              continuar=0;
+              break;
+            //default:
+              //throw new ArgumentOutOfRangeException();
 				  }
+          //if(continuar)
 
-				  opcaoUsuario = ObterOpcaoUsuario();
+				  escolhaUsuario = ObterOpcaoUsuario2();
 			  }
 
 			  Console.WriteLine("Obrigado por utilizar nossos serviços.");
@@ -73,7 +87,6 @@ namespace DIO.Series
 			  {
 				  Console.WriteLine("{0}-{1}", i, Enum.GetName(typeof(Genero), i));
 			  }
-
 			  Console.Write("Digite o gênero entre as opções acima: ");
 			  int entradaGenero = int.Parse(Console.ReadLine());
 
@@ -86,6 +99,7 @@ namespace DIO.Series
 			  Console.Write("Digite a Descrição da Série: ");
 			  string entradaDescricao = Console.ReadLine();
 
+        // Atualizar a série
 			  Serie atualizaSerie = new Serie(id: indiceSerie,
 										genero: (Genero)entradaGenero,
 										titulo: entradaTitulo,
@@ -94,6 +108,7 @@ namespace DIO.Series
 
 			  repositorio.Atualiza(indiceSerie, atualizaSerie);
 		  }
+
       private static void ListarSeries()
 		  {
 			  Console.WriteLine("Listar séries");
@@ -163,6 +178,55 @@ namespace DIO.Series
         string opcaoUsuario = Console.ReadLine().ToUpper();
         Console.WriteLine();
         return opcaoUsuario;
+      }
+
+      private static int ObterOpcaoUsuario2()
+      {
+        int continuar=0;
+        Console.WriteLine();
+        Console.WriteLine("DIO Séries a seu dispor!!!");
+        Console.WriteLine("Informe a opção desejada:");
+
+        Console.WriteLine("1- Listar séries");
+        Console.WriteLine("2- Inserir nova série");
+        Console.WriteLine("3- Atualizar série");
+        Console.WriteLine("4- Excluir série");
+        Console.WriteLine("5- Visualizar série");
+        Console.WriteLine("C- Limpar Tela");
+        Console.WriteLine("X- Sair");
+        Console.WriteLine();
+
+        string opcaoUsuario = Console.ReadLine().ToUpper();
+
+				switch (opcaoUsuario)
+				{
+            case "1":
+              continuar=1;
+              break;
+            case "2":
+              continuar=2;
+              break;
+            case "3":
+              continuar=3;
+              break;
+            case "4":
+              continuar=4;
+              break;
+            case "5":
+              continuar=5;
+              break;
+            case "C":
+              continuar=6;
+              break;
+            case "X":
+              continuar=7;
+              break;
+            //default:
+              //throw new ArgumentOutOfRangeException();
+				}
+
+        Console.WriteLine();
+        return continuar;
       }
       
     }

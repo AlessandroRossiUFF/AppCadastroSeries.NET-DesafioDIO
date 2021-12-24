@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wtqcpieWJSKayRea73cHR1lYj6XBCmzndhIZCNXHmEqhNFSuhTOdxv5vpGmGQPpoLEwHwJ4Knz6Iryb+FXSbrA==",
+  "dgSpecHash": "chG771Y5A5qIXauQbhUrnZbdrNpjaBPly+UGDrVa0tmv518eACTY6kEhIZ9F5OtQkM5DNVH65TvZdPEYnjus2A==",
   "success": true,
-  "projectFilePath": "/home/runner/Projeto2CSharp/myApp.csproj",
+  "projectFilePath": "/home/runner/AppCadastroSeriesNET/myApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/runner/Projeto2CSharp/myApp.csproj": {}
+    "/home/runner/AppCadastroSeriesNET/myApp.csproj": {}
   },
   "projects": {
-    "/home/runner/Projeto2CSharp/myApp.csproj": {
+    "/home/runner/AppCadastroSeriesNET/myApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/runner/Projeto2CSharp/myApp.csproj",
+        "projectUniqueName": "/home/runner/AppCadastroSeriesNET/myApp.csproj",
         "projectName": "myApp",
-        "projectPath": "/home/runner/Projeto2CSharp/myApp.csproj",
+        "projectPath": "/home/runner/AppCadastroSeriesNET/myApp.csproj",
         "packagesPath": "/home/runner/.nuget/packages/",
-        "outputPath": "/home/runner/Projeto2CSharp/obj/",
+        "outputPath": "/home/runner/AppCadastroSeriesNET/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/runner/.nuget/NuGet/NuGet.Config"
@@ -52,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/runner/Projeto2CSharp/dotnet-src/sdk/5.0.103/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/runner/AppCadastroSeriesNET/dotnet-src/sdk/5.0.103/RuntimeIdentifierGraph.json"
         }
       }
     }
