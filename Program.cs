@@ -5,15 +5,19 @@ namespace DIO.Series
     class Program
     {
       static SerieRepositorio repositorio = new SerieRepositorio();
-      //int totalSeries = 0;
+      
 
       static void Main(string[] args)
       {
-        string opcaoUsuario = ObterOpcaoUsuario();
-        int escolhaUsuario = ObterOpcaoUsuario2();
+        int totalSeries = 0;
+
         int continuar=1;
+        int escolhaUsuario = ObterOpcaoUsuario2();
 			  while (continuar!=0)
 			  {
+          Console.WriteLine("\nSeries Cadastradas: "+totalSeries);
+          //string opcaoUsuario = ObterOpcaoUsuario();
+          //int escolhaUsuario = ObterOpcaoUsuario2();          
           continuar=0;
           
 				  switch (escolhaUsuario)
@@ -23,7 +27,7 @@ namespace DIO.Series
               continuar=1;
               break;
             case 2:
-              InserirSerie();
+              totalSeries = InserirSerie(totalSeries);
               continuar=1;
               break;
             case 3:
@@ -49,7 +53,7 @@ namespace DIO.Series
             //default:
               //throw new ArgumentOutOfRangeException();
 				  }
-          //if(continuar)
+          //Console.WriteLine("Series Cadastradas: "+totalSeries);
 
 				  escolhaUsuario = ObterOpcaoUsuario2();
 			  }
@@ -127,9 +131,10 @@ namespace DIO.Series
                   
           Console.WriteLine("#ID {0}: - {1} {2}", serie.retornaId(), serie.retornaTitulo(), (excluido ? "*Excluído*" : ""));
         }
+        //Console.WriteLine("Series Cadastradas: "+totalSeries);
 		  }
 
-      private static void InserirSerie()
+      private static int InserirSerie(int totalSeries)
       {
         Console.WriteLine("Inserir nova série");
 
@@ -158,6 +163,7 @@ namespace DIO.Series
                       descricao: entradaDescricao);
 
         repositorio.Insere(novaSerie);
+        return totalSeries+1;
       }
 
       private static string ObterOpcaoUsuario()
@@ -194,6 +200,7 @@ namespace DIO.Series
         Console.WriteLine("5- Visualizar série");
         Console.WriteLine("C- Limpar Tela");
         Console.WriteLine("X- Sair");
+        Console.WriteLine("Cuidado: certas entradas inválidas podem finalizar o programa!");
         Console.WriteLine();
 
         string opcaoUsuario = Console.ReadLine().ToUpper();
